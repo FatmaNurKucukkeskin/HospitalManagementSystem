@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Hospital Management System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mystyle.css' %}">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Hospital Management System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="myMenu">
+            <ul class="navbar-nav text-center ml-auto">
+                {% if not request.user.is_staff %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="fas fa-home"></i>
+                        Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}"><i
+                            class="far fa-address-card"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}"><i class="fas fa-comments"></i>
+                        Contact</a></li>
+                {% endif %}
+
+                {% if request.user.is_staff %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="fas fa-home"></i>
+                        Home</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="doctorDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-md"></i> Doctor
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="doctorDropdown">
+                            <a class="dropdown-item" href="#">Add Doctor</a>
+                            <a class="dropdown-item" href="{% url 'view_doctor' %}">View Doctor</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="patientDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-heart"></i> Patient
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="patientDropdown">
+                            <a class="dropdown-item" href="#">Add Patient</a>
+                            <a class="dropdown-item" href="#">View Patient</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="appointmentDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-plus-square"></i> Appointment
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="appointmentDropdown">
+                            <a class="dropdown-item" href="#">Add Appointment</a>
+                            <a class="dropdown-item" href="#">View Appointment</a>
+                        </div>
+                    </li>
+                    <!-- Logout link in the navbar -->
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><i
+                            class="fa fa-sign-out-alt"></i> Logout</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% block body %}
+{% endblock %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
