@@ -6,17 +6,29 @@
 
         <h2 class="text-center">View Doctor</h2>
         <br><br>
-    <table>
-        <thead>
-        <tr>
-            <th>Doctor ID</th>
-            <th>Doctor Name</th>
-            <th>Contact</th>
-            <th>Specialization</th>
-        </tr>
-        </thead>
-    </table>
-
+        <table class="table table-hover" id="example">
+            <thead>
+            <tr>
+                <th>Doctor ID</th>
+                <th>Doctor Name</th>
+                <th>Contact</th>
+                <th>Specialization</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in doc %}
+                <tr>
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.contact }}</td>
+                    <td>{{ i.special }}</td>
+                    <td><a href="{% url 'delete_doctor' i.id %}"
+                           onclick="return confirm('Are u really want to delete?')" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
-
 {% endblock %}

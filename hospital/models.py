@@ -1,19 +1,19 @@
 from django.db import models
 
-# Create your models here.
-
+# Model for storing information about doctors
 class Doctor(models.Model):
-    name = models.CharField(max_length=50)
-    mobile = models.IntegerField()
-    special = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)  # Name of the doctor
+    contact = models.IntegerField(null=True)  # Contact number of the doctor (optional)
+    special = models.CharField(max_length=50)  # Specialization of the doctor
 
     def __str__(self):
-        return self.name
+        return self.name  # String representation of the doctor object
+
 
 class Patient(models.Model):
     name = models.CharField(max_length=50)
     gender = models.CharField(max_length=10)
-    mobile = models.IntegerField(null=True)
+    contact = models.IntegerField(null=True)
     address = models.CharField(max_length=150)
 
     def __str__(self):
@@ -22,8 +22,8 @@ class Patient(models.Model):
 class Appointment(models.Model):
     doctor = models.ForeignKey(Doctor,on_delete=models.CASCADE)
     patient = models.ForeignKey(Patient,on_delete=models.CASCADE)
-    date1 = models.DateField()
-    time1 = models.TimeField()
+    date1 = models.DateField(null=True)
+    time1 = models.TimeField(null=True)
 
     def __str__(self):
         return self.doctor.name+"--"+self.patient.name
