@@ -8,5 +8,14 @@
       <jdbc-url>jdbc:sqlite:C:\Users\ftmnr\Desktop\HospitalManagement\db.sqlite3</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="Django default" uuid="3cad2eb7-c91a-4d40-9aa6-d9b21ee04162">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/HospitalManagement/settings.py</remarks>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\ftmnr\Desktop\staj\staj projeler\HospitalManagementSystem\db.sqlite3</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
